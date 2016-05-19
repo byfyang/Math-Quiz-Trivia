@@ -1,9 +1,16 @@
 //load the JS after pages loads
 window.addEventListener("load", showQuestion);
-//position of array starts at zero
-var position = 0;
+//initiate the timer
+window.addEventListener("load", countDownInit);
+//show the highest score
+window.addEventListener("load", priorhighScore);
+
+// //counter of array starts at zero
+var counter = 0;
 //# of correct answers at zero  
 var correct = 0;
+//initialize global object/value 
+var gameQuestion = {};
 
 //Question Array database
 var questionsArray = [
@@ -15,69 +22,67 @@ var questionsArray = [
 	[ "What is 8 x 12?", "96", "76", "86", "A" ]
 ];
 
-//random selection of question from questionsArray
-var randomQuestion = function (){
-	var cQuestion = Math.floor(Math.random() * questionsArray.length);
-	return cQuestion;
-};
-
-
-
-
-//timer for game
-// function countDown(secs, elem){
-// 	secs = 10;
-// 	var element = document.getElementsByID('timer');
-// 	console.log(element);
-// 	element.innerHTML = "<p1>Remaing Time: " + secs + " seconds</p1>";
-// 	if (secs <1){
-// 		clearTimeout(timer);
-// 		element.innerHTML = "<p2>Too Slow</p2>";
-
-// 	}
-// 	secs--;
-// 	var timer = setTimeout('countDown('+secs+',"'+ elem +'")',1000);
-// }
-
-
-
-//get Element function
+//get Element function to be used later
 function getElement(x){
 	return document.getElementById(x);
 }
 
+//timer for game
+function countDownInit() {
+    countDownNumber = 11;
+    countDownTrigger();
+}
+
+//timer for game
+function countDownTrigger(){
+    if(countDownNumber > 0){
+            countDownNumber--;
+            document.getElementById('timer').textContent = countDownNumber + " seconds left";
+            if(countDownNumber > 0){
+                countDown = setTimeout('countDownTrigger()', 1000);
+            }
+    }
+}
+
+//random selection of question from questionsArray
+var randomQuestion = function (){
+	gameQuestion = Math.floor(Math.random() * questionsArray.length);
+	return gameQuestion;
+};
+
 //display Question from question database
 function showQuestion(){
-	
-	//initiate priorhighScore() function so it displays on DOM
-	priorhighScore();
+
+	var arrayIndex = randomQuestion();
 
 	//grab questionArea on DOM
 	questionArea = getElement("questionArea");
 	
-	//checks position relative to length of array to display completion
-	if(position >= questionsArray.length){
+	//checks counter to length of array to display completion
+	if(counter >= questionsArray.length){
 		questionArea.innerHTML = "<h2>You got "+ correct + " of " + questionsArray.length + " questions correct</h2>";
 			getElement("test_status").textContent = "Test Completed";
-		position = 0;
-		correct = 0;
+		//position = 0;
+		//correct = 0;
  		return false;
  	}
 
- 	//var cQuestion = Math.floor(Math.random() * questionsArray.length);
 	//assign array content to variables 
-	var question = questionsArray[position][0];
-	var choiceA = questionsArray[position][1];
-	var choiceB = questionsArray[position][2];
-	var choiceC = questionsArray[position][3];
+	var question = questionsArray[arrayIndex][0];
+	var choiceA = questionsArray[arrayIndex][1];
+	var choiceB = questionsArray[arrayIndex][2];
+	var choiceC = questionsArray[arrayIndex][3];
 
-	//assign content to DOM
+
+	//grab DOM element and assign content to DOM
 	questionArea.innerHTML = "<h2>"+question+"</h2>";
 	questionArea.innerHTML += "<input type='radio' name='choices' value='A'> "+choiceA+"<br>";
 	questionArea.innerHTML += "<input type='radio' name='choices' value='B'> "+choiceB+"<br>";
 	questionArea.innerHTML += "<input type='radio' name='choices' value='C'> "+choiceC+"<br><br>";
 	questionArea.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
-	console.log(document.getElementsByName('choices'));
+
+	//count# for question appearance
+	counter++;
 
 	//reset button
 	reset();
@@ -85,33 +90,38 @@ function showQuestion(){
 
 //checkAnswer function
 function checkAnswer(){
+	//select "choices" from DOM after being set in showQuestion function
 	var choices = document.getElementsByName("choices");
 	for (var i = 0; i < choices.length; i++){
 		if (choices[i].checked){
 			selectedAnswer=choices[i].value;
 		}
 	}
-	if(selectedAnswer == questionsArray[position][4]){
-		//alert("correct");
+	//compare answers and selected radio button while increasing count of correct answers
+	if(selectedAnswer == questionsArray[gameQuestion][4]){
 		correct++;
 		currentScore();
 	}
-	position++;
 	showQuestion();
 }
 
 function currentScore(){
-	//set current score
+	//grab DOM element and pushing in score
 	getElement('score').innerHTML = "Score: " + correct;
 	//update localStorage score if need to
-	if (correct > localStorage.getItem('existingScore')){
+	if (correct >= localStorage.getItem('existingScore')){
 		localStorage.setItem('existingScore', correct);
 	 }
 }
 
 //set prior score
 function priorhighScore(){
-	getElement('priorScores').innerHTML = "Prior High Score: " +localStorage.getItem('existingScore');
+	if (localStorage.getItem('exisitingScore') === null){
+		localStorage.setItem('existing', 0);
+	}else
+		currentScore();
+		getElement('priorScores').innerHTML = "High Score: " +localStorage.getItem('existingScore');
+	 
 }
 
 //reset button function
