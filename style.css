@@ -1,9 +1,22 @@
 h1{
   text-align: center;
   font-family: cursive;
+  margin: 5% auto;
+  margin-bottom: 0.1em;
+
 }
 
-#clock, #scoreboard {
+ .timer{
+  height: 50px;
+  width: 100px;
+  margin: 5% auto;
+  border: 1px solid black;
+  font-size: 15px;
+  text-align: center;
+  float: right;
+}
+
+#clock{
   height: 50px;
   width: 100px;
   margin: 5% auto;
@@ -12,11 +25,10 @@ h1{
   font-size: 13px;
   text-align: center;
 
-
 }
 
 #startOver{
-  float: right;
+  
 }
 
 .stage {
@@ -54,6 +66,6 @@ h1{
 }
 
 #questionArea{ 
-  border:#000 1px solid; 
+ 
   padding:10px 40px 40px 40px; 
 }
