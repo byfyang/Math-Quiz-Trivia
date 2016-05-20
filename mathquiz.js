@@ -72,8 +72,7 @@ function showQuestion(){
 	if(counter >= questionsArray.length){
 		questionArea.innerHTML = "<h2>You got "+ correct + " of " + questionsArray.length + " questions correct</h2>";
 			getElement("test_status").textContent = "Test Completed";
-		//position = 0;
-		//correct = 0;
+		//stops the function	
  		return false;
  	}
 
@@ -82,7 +81,6 @@ function showQuestion(){
 	var choiceA = questionsArray[arrayIndex][1];
 	var choiceB = questionsArray[arrayIndex][2];
 	var choiceC = questionsArray[arrayIndex][3];
-
 
 	//grab DOM element and assign content to DOM
 	questionArea.innerHTML = "<h2>"+question+"</h2>";
@@ -162,7 +160,7 @@ function flip(){
 
 //jQuery for click submitButton calling checkAnswer function
 $(document).ready(function() {
-	$('div.stage').on('click', "#submitButton",  function(){
+	$('div.stage').on('click', "#submitButton", function(){
 		// console.log('test');
 		checkAnswer();
 	});
