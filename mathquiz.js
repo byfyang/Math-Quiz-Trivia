@@ -42,7 +42,7 @@ function getElement(x){
 
 //timer for game
 function countDownInit() {
-    countDownNumber = 16;
+    countDownNumber = 21;
     countDownTrigger();
     tickAudio.play();
 }
@@ -134,7 +134,7 @@ function currentScore(){
 //set prior score
 function priorhighScore(){
 	if (localStorage.getItem('exisitingScore') === null){
-		localStorage.setItem('existingScore', 0);
+		localStorage.setItem('existing', 0);
 	}else
 		currentScore();
 		getElement('priorScores').innerHTML = "High Score: " +localStorage.getItem('existingScore');
