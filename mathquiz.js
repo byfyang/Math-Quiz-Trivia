@@ -19,7 +19,15 @@ var questionsArray = [
 	[ "What is 7 x 3?", "21", "24", "25", "A" ],
 	[ "What is 8 / 2?", "10", "2", "4", "C" ],
 	[ "What is 55 / 5?", "10", "11", "4", "B" ],
-	[ "What is 8 x 12?", "96", "76", "86", "A" ]
+	[ "What is 8 x 12?", "96", "76", "86", "A" ],
+	[ "What is 5 x 12?", "66", "60", "40", "B" ],
+	[ "What is 9 + 27?", "34", "45", "36", "C" ],
+	[ "What is 54 - 17?", "43", "37", "47", "B" ],
+	[ "What is 95 / 5?", "14", "18", "19", "C" ],
+	[ "What is 8 x 12?", "96", "76", "86", "A" ],
+	[ "What is 21 + 34?", "55", "43", "37", "A" ],
+	[ "What is 69 + 76?", "175", "128", "145", "C" ],
+	[ "What is -11 -  -12?", "-23", "-9", "1", "C" ]
 ];
 
 //get Element function to be used later
@@ -29,9 +37,8 @@ function getElement(x){
 
 //timer for game
 function countDownInit() {
-    countDownNumber = 3;
+    countDownNumber = 11;
     countDownTrigger();
-
 }
 
 //timer for game
@@ -55,7 +62,7 @@ var randomQuestion = function (){
 
 //display Question from question database
 function showQuestion(){
-
+	//call randomQuestion and set the random # to arrayIndex variable
 	var arrayIndex = randomQuestion();
 
 	//grab questionArea on DOM
@@ -87,6 +94,7 @@ function showQuestion(){
 	//count# for question appearance
 	counter++;
 
+	//flip animation
 	flip();
 
 	//reset button

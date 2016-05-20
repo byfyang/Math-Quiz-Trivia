@@ -1,5 +1,5 @@
 body{
-  background: linear-gradient (white, blue) ;
+  background-image: url(http://www.intrawallpaper.com/static/images/518164-backgrounds.jpg);
 }
 
 h1{
@@ -10,44 +10,23 @@ h1{
 
 }
 
- .timer{
-  height: 50px;
-  width: 100px;
-  margin: 5% auto;
-  border: 1px solid black;
-  font-size: 15px;
-  text-align: center;
-  float: right;
-}
-
-#clock{
-  height: 50px;
-  width: 100px;
-  margin: 5% auto;
-  border: 1px solid black;
-  float: left;
-  font-size: 13px;
-  text-align: center;
-
-}
-
 .stage {
-  -webkit-perspective: 1000; 
+  -webkit-perspective: 1000;
   vertical-align: top;
-  float: right;
-  /*width: 500px;*/
-  /*background-image: url(http://www.intrawallpaper.com/static/images/White-Background-9B1.jpg);*/
+  position: right;
+
 }
 
 .flashcard {
   height: 300px;  
   width: 500px; 
   margin: 10% auto;
-  border: 1px solid gray; 
-  box-shadow: 2px 2px 2px #000;
+  border: 2px solid gray; 
+  box-shadow: 4px 4px 4px #000;
   -webkit-transform-style: preserve-3d;  
   transition: all 0.3s;               
   -webkit-transition: all 0.3s;
+  font-size: 25px;
 }
 
 .flipped {
@@ -75,29 +54,16 @@ h1{
 h3{
   position: center;
   text-align: center;
-  float: left;
+  width: auto;
 }
 
 #score{
-
-
 }
-
 #priorScores{
- 
-
 }
-
 #timer{
-
-
 }
-
 #StartOver{
-  height: 20px;
-  border: 1px solid black;
-  text-align: center;
-  position: center;
 }
 
 
