@@ -1,5 +1,6 @@
 # Math-Quiz-Trivia
 
+Link to game: http://mathquiztriviabyf.bitballoon.com/
 
 This is a simple Math Quiz Trivia game. I created this game with a set list of math questions (it can be expanded or I can find an API with math questions - it's a pain to make your own). 
 
