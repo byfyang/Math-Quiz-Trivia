@@ -2,9 +2,19 @@
 <html>
 <head>
 	<title>Math Quiz</title>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="style.css">
+
+		<!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+<!--       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+
+    <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
 	
+
 	<script src = "mathquiz.js"></script>
 
 </head>
@@ -19,21 +29,22 @@
 
 					<div id="questionArea"></div>
 				</div>
-			</div>
-			
-			<div class = 'back'></div>	
-
+		</div>
 	</div>
 
-	
-	<div id = 'score'>Score: 0</div>
+
+<h3>
+	<div class = "scoreBoard" id = 'score'>Score: 0</div>
 		<div id = 'priorScores'></div>
-			
-	<div>Time:</div>
-		<div id = 'timer'></div>
+			<div id = 'timer'>Time</div>
+
+</h3>
 
 	<button id='StartOver'>Start Over</button>
+
 
 	
 </body>
 </html>
+
+

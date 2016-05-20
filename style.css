@@ -1,3 +1,7 @@
+body{
+  background: linear-gradient (white, blue) ;
+}
+
 h1{
   text-align: center;
   font-family: cursive;
@@ -27,13 +31,12 @@ h1{
 
 }
 
-#startOver{
-  
-}
-
 .stage {
   -webkit-perspective: 1000; 
   vertical-align: top;
+  float: right;
+  /*width: 500px;*/
+  /*background-image: url(http://www.intrawallpaper.com/static/images/White-Background-9B1.jpg);*/
 }
 
 .flashcard {
@@ -47,12 +50,12 @@ h1{
   -webkit-transition: all 0.3s;
 }
 
-.flipped, .back {
-  transform: rotatey(180deg);
-  -webkit-transform: rotatey(180deg); 
+.flipped {
+  transform: rotatey(360deg);
+  -webkit-transform: rotatey(360deg); 
 }
 
-.front, .back {
+.front {
   height: 300px;          
   width: 500px;
   position: absolute;    
@@ -60,12 +63,42 @@ h1{
   -webkit-backface-visibility: hidden;       
 }
 
-.test_status p, .back p {
+.front p {
   margin-top: 25%;       
   font-size: 3em;
 }
 
 #questionArea{ 
- 
   padding:10px 40px 40px 40px; 
 }
+
+h3{
+  position: center;
+  text-align: center;
+  float: left;
+}
+
+#score{
+
+
+}
+
+#priorScores{
+ 
+
+}
+
+#timer{
+
+
+}
+
+#StartOver{
+  height: 20px;
+  border: 1px solid black;
+  text-align: center;
+  position: center;
+}
+
+
+

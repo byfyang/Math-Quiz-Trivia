@@ -29,18 +29,21 @@ function getElement(x){
 
 //timer for game
 function countDownInit() {
-    countDownNumber = 11;
+    countDownNumber = 3;
     countDownTrigger();
+
 }
 
 //timer for game
 function countDownTrigger(){
-    if(countDownNumber > 0){
-            countDownNumber--;
-            document.getElementById('timer').textContent = countDownNumber + " seconds left";
-            if(countDownNumber > 0){
-                countDown = setTimeout('countDownTrigger()', 1000);
-            }
+   if(countDownNumber > 0){
+        countDownNumber--;
+        document.getElementById('timer').textContent = countDownNumber + " seconds left";
+        	setTimeout(countDownTrigger, 1000);
+        //if timer runs out call noTime function
+    	}else if (countDownNumber <=0){
+    		noTime();
+    		alert("Time has run out!!!");
     }
 }
 
@@ -79,10 +82,12 @@ function showQuestion(){
 	questionArea.innerHTML += "<input type='radio' name='choices' value='A'> "+choiceA+"<br>";
 	questionArea.innerHTML += "<input type='radio' name='choices' value='B'> "+choiceB+"<br>";
 	questionArea.innerHTML += "<input type='radio' name='choices' value='C'> "+choiceC+"<br><br>";
-	questionArea.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+	questionArea.innerHTML += "<button id = 'submitButton'>Submit Answer</button>";
 
 	//count# for question appearance
 	counter++;
+
+	flip();
 
 	//reset button
 	reset();
@@ -134,20 +139,25 @@ function startOver(){
 	location.reload();
 }
 
+//jquery function for stopping eventHandler for click on submitButton
+function noTime(){
+	//console.log('no time');
+	$('div.stage').off('click', "#submitButton");
+}
 
-// $('.flashcard').on('click', function() {
-// 	$('.flashcard').toggleClass('flipped');
-// 	});
+//jQuery for flipping area animation
+function flip(){
+	$('#submitButton').on('click', function() {
+		$('.flashcard').toggleClass('flipped');
+	});
+}
 
-
-// $(document).ready(function() {
-//   $('.flashcard').on('click', function() {
-//     $('.flashcard').toggleClass('flipped');
-//   });
-// });
-
-
-//randomword - arrayOfWords[Math.floor(Math.random()*arrayofWords.length)];
-
+//jQuery for click submitButton calling checkAnswer function
+$(document).ready(function() {
+	$('div.stage').on('click', "#submitButton",  function(){
+		// console.log('test');
+		checkAnswer();
+	});
+});
 
 
