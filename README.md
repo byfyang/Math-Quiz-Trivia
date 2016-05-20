@@ -12,3 +12,5 @@ Unsolved issue: The CSS/aesthetics of the game needs to be worked on. I'll proba
 
 Rules of the Game:
 Just play the game - Two buttons, one timer, simple enough...I think you'll do alright ^.^V
+
+![alt tag](https://github.com/byfyang/Math-Quiz-Trivia/blob/master/IMG_20160520_103957.jpg)
