@@ -12,6 +12,8 @@ var correct = 0;
 //initialize global object/value 
 var gameQuestion = {};
 
+var tickAudio = new Audio('https://freesound.org/data/previews/254/254316_4062622-lq.mp3');
+
 //Question Array database
 var questionsArray = [
     [ "What is 10 + 4?", "12", "14", "16", "B" ],
@@ -27,7 +29,10 @@ var questionsArray = [
 	[ "What is 8 x 12?", "96", "76", "86", "A" ],
 	[ "What is 21 + 34?", "55", "43", "37", "A" ],
 	[ "What is 69 + 76?", "175", "128", "145", "C" ],
-	[ "What is -11 -  -12?", "-23", "-9", "1", "C" ]
+	[ "What is -11 -  -12?", "-23", "-9", "1", "C" ],
+	[ "What is 9 + 23?", "36", "32", "26", "B" ],
+	[ "What is 47 - 10?", "27", "17", "37", "C" ],
+	[ "What is 8 x 6?", "48", "56", "45", "A" ]
 ];
 
 //get Element function to be used later
@@ -37,8 +42,9 @@ function getElement(x){
 
 //timer for game
 function countDownInit() {
-    countDownNumber = 11;
+    countDownNumber = 16;
     countDownTrigger();
+    tickAudio.play();
 }
 
 //timer for game
@@ -128,7 +134,7 @@ function currentScore(){
 //set prior score
 function priorhighScore(){
 	if (localStorage.getItem('exisitingScore') === null){
-		localStorage.setItem('existing', 0);
+		localStorage.setItem('existingScore', 0);
 	}else
 		currentScore();
 		getElement('priorScores').innerHTML = "High Score: " +localStorage.getItem('existingScore');
